@@ -1,39 +1,58 @@
-[![ES6](https://github.com/MarioTerron/logo-images/blob/master/logos/es6.png)](http://www.ecma-international.org/ecma-262/6.0/)
-[![npm](https://github.com/MarioTerron/logo-images/blob/master/logos/npm.png)](https://www.npmjs.com/)
-![img-tech](https://d2kgv4a73c4ye.cloudfront.net/wp-content/uploads/2017/05/reactjs-logo-300x84.png)
-![img-tech](https://raw.githubusercontent.com/ddmarin94/React-Webpack-Github/master/img/babel.png)  
-![firebase](https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-128.png)
-# [react-twitter-clone](https://github-twitter-41292.firebaseapp.com/#/)
----
-## Description
+# Twitter Clone
 
-Twitter clone app with social github login authentication using react, webpack, jsx syntax and firebase as a service.
+A modern Twitter clone built with Next.js 14, React, MongoDB, and Prisma. Features real-time updates, image uploads, and user authentication.
 
-![Screenshot](https://i.imgur.com/tsmEkud.png)
+## Features
 
----
-## Installation
+- 🔐 Authentication with NextAuth
+- 📝 Create, edit, and delete tweets
+- 💭 Comment on tweets
+- ❤️ Like and retweet functionality
+- 👥 Follow/unfollow users
+- 🖼️ Image upload support
+- 🌙 Responsive design
+- 🔍 User search functionality
+- 📱 Mobile-friendly interface
 
-To work with this project locally, first install all dependecies:
+## Tech Stack
 
-```
-npm install
-```
+- **Frontend:** React, Next.js 14, TailwindCSS
+- **Backend:** Next.js API Routes, Prisma
+- **Database:** MongoDB
+- **Authentication:** NextAuth.js
+- **File Upload:** UploadThing
+- **State Management:** Zustand
+- **Deployment:** Vercel
 
-To build and run the project, project runs on port 3000.
+## Getting Started
 
-```
-npm start
-```
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the root directory with the following variables:
+   ```
+   DATABASE_URL="your_mongodb_url"
+   NEXTAUTH_SECRET="your_nextauth_secret"
+   NEXTAUTH_URL="http://localhost:3000"
+   UPLOADTHING_SECRET="your_uploadthing_secret"
+   UPLOADTHING_APP_ID="your_uploadthing_app_id"
+   ```
+4. Set up the database:
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+5. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-To make the final build before pushing to production:
+## Deployment
 
-```
-npm run production 
-```
+The project is configured for easy deployment on Vercel. Simply connect your GitHub repository to Vercel and it will automatically deploy your changes.
 
-I recommend reading [firebase docs](https://firebase.google.com/docs/) to host and use realtime database for this project. 
+## License
 
----
-
-In a near future, I want to do a clone of this project to re-write it with the new React-hooks syntax. Once I do it, I will link it here, so you can appreciate the difference.
+MIT
