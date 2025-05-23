@@ -1,42 +1,41 @@
-const webpack = require('webpack')
+const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const dotenv = require('dotenv').config();
 
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  
+
   entry: './src/index.jsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist/'),
     publicPath: '/'
   },
+
   module: {
     rules: [
       {
-        test: /(\.js|jsx)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
         test: /\.css$/,
         use: [
+          MiniCssExtractPlugin.loader,
           {
-            loader: MiniCssExtractPlugin.loader
-          },
-
-          {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              localIdentName: "[local]___[hash:base64:5]"
+              modules: {
+                localIdentName: '[local]___[hash:base64:5]'
+              }
             }
-          },
+          }
         ]
       }
     ]
@@ -44,8 +43,11 @@ module.exports = {
 
   devServer: {
     port: 3000,
-    stats: { colors: true },
-    inline: true
+    static: {
+      directory: path.join(__dirname, 'dist')
+    },
+    hot: true,
+    historyApiFallback: true
   },
 
   plugins: [
@@ -53,6 +55,6 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(dotenv.parsed)
-    }),
+    })
   ]
-}
+};
